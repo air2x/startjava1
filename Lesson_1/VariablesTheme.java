@@ -17,7 +17,7 @@ public class VariablesTheme {
         System.out.println("Разрешение камеры " + webcamResolution + " Мп");
         System.out.println("Максимальная емкость аккумулятора = " + maxBatteryLife + " ч");
         System.out.println("Чипсет " + chipset);
-        System.out.println("Тип компьютера игровой = " + diskDrive);
+        System.out.println("Тип компьютера: игровой = " + gaming);
 
         System.out.println("\n 2. Расчет стоимости товара со скидкой\n");
         int pricePen = 100;
