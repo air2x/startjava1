@@ -9,7 +9,7 @@ public class VariablesTheme {
         double webcamResolution = 4.20;
         float maxBatteryLife = 3.50f;
         char chipset = 'I';
-        boolean diskDrive = true;
+        boolean gaming = true;
         System.out.println("Оперативная память = " + ram + " Гб");
         System.out.println("Жесткий диск = " + ssd + " Гб");
         System.out.println("Тактовая частота = " + clockFrequency + " Гц");
@@ -17,7 +17,7 @@ public class VariablesTheme {
         System.out.println("Разрешение камеры " + webcamResolution + " Мп");
         System.out.println("Максимальная емкость аккумулятора = " + maxBatteryLife + " ч");
         System.out.println("Чипсет " + chipset);
-        System.out.println("Наличие дисковода = " + diskDrive);
+        System.out.println("Тип компьютера игровой = " + diskDrive);
 
         System.out.println("\n 2. Расчет стоимости товара со скидкой\n");
         int pricePen = 100;
@@ -39,10 +39,10 @@ public class VariablesTheme {
         short shortMax = Short.MAX_VALUE;
         int intMax = Integer.MAX_VALUE;
         long longMax = Long.MAX_VALUE;
-        System.out.println(byteMax++ + "," + byteMax + "," + byteMax--);
-        System.out.println(shortMax++ + "," + shortMax + "," + shortMax--);
-        System.out.println(intMax++ + "," + intMax + "," + intMax--);
-        System.out.println(longMax++ + "," + longMax + "," + longMax--);
+        System.out.println(byteMax + "," + ++byteMax + "," + --byteMax);
+        System.out.println(shortMax + "," + ++shortMax + "," + --shortMax);
+        System.out.println(intMax + "," + ++intMax + "," + --intMax);
+        System.out.println(longMax + "," + ++longMax + "," + --longMax);
 
         System.out.println("\n 5. Перестановка значений переменных\n");
         int num1 = 2;
@@ -101,8 +101,9 @@ public class VariablesTheme {
 
         System.out.println("\n9. Вывод времени\n");
         int seconds = 86399;
-        double minutes = seconds / 60;
-        double hour = seconds / 3600;
-        System.out.println(hour + ":" + minutes + ":" + seconds);
+        int sec = seconds % 60;
+        int minutes = (seconds / 60) % 60;
+        int hour = (seconds / 3600) % 24;
+        System.out.println(hour + ":" + minutes + ":" + sec);
     }
 }
