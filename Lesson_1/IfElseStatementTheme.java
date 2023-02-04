@@ -8,8 +8,8 @@ public class IfElseStatementTheme {
         } else { 
             System.out.println("Вам запрещен вход в ночной клуб");
         }
-        boolean genderMan = true;
-        if (!genderMan) {
+        boolean maleGender = true;
+        if (!maleGender) {
             System.out.println("Это женский туалет, вам сюда нельзя");
         } else {
             System.out.println("Это мужской туалет");
@@ -34,62 +34,50 @@ public class IfElseStatementTheme {
         int num2 = 453;
         if (num1 > num2) {
             System.out.println("Число " + num1 + " max, число " + num2 + " min");
-        } else if ( num2 > num1) {
+        } else if (num2 > num1) {
             System.out.println("Число " + num2 + " max, число " + num1 + " min");
-        } else if (num1 == num2) {
+        } else {
             System.out.println("Числа равны");
         }
 
         System.out.println("\n3.Проверка числа \n");
-        int number = 8;
-        if (number != 0) {
-            if (number % 2 == 0) {
-                System.out.println("Исходное число " + number + " четное");
+        int num = 8;
+        if (num != 0) {
+            if (num % 2 == 0) {
+                System.out.println(num + " четное");
             } else {
-                System.out.println("Исходное число " + number + " не четное");
+                System.out.println(num + " не четное");
             }
-            if (number < 0) {
-                System.out.println("Исходное число " + number + " отрицательное");
+            if (num < 0) {
+                System.out.println(num + " отрицательное");
             } else {
-                System.out.println("Исходное число " + number + " положительное");
+                System.out.println(num + " положительное");
             }
         } else {
-            System.out.println("Исходное число " + number + " равно 0");
+            System.out.println("Исходное число равно " + num);
         }
 
         System.out.println("\n4.Поиск одинаковых цифр в числах \n");
-        int numA = 456;
-        int numB = 634;
-        int numAHundreds = numA / 100;
-        int numATens = numA / 10 % 10;
-        int numAOnes = numA % 10;
-        int numBHundreds = numB / 100;
-        int numBTens = numB / 10 % 10;
-        int numBOnes = numB % 10;
-        if (numAHundreds == numBHundreds && numATens == numBTens && numAOnes == numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n все цифры, стоящие " + 
-                    "в одном разряде, одинаковые ");
-        } else if (numAHundreds == numBHundreds && numATens == numBTens && numAOnes != numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n одинаковые цифры: " + 
-                    numAHundreds + " и " + numATens + " разряды 1 и 2");
-        } else if (numAHundreds == numBHundreds && numATens != numBTens && numAOnes != numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n одинаковые цифры: " + 
-                    numAHundreds + " разряд 1");
-        } else if (numAHundreds != numBHundreds && numATens != numBTens && numAOnes != numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + 
-                    "\nвсе цифры в разрядах разные");
-        } else if (numAHundreds != numBHundreds && numATens == numBTens && numAOnes == numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n одинаковые цифры: " + 
-                    numATens + " и " + numAOnes + " разряды 2 и 3");
-        } else if (numAHundreds != numBHundreds && numATens == numBTens && numAOnes != numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n одинаковые цифры: " + 
-                    numATens + " разряд 2");
-        } else if (numAHundreds != numBHundreds && numATens != numBTens && numAOnes == numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n одинаковые цифры: " + 
-                    numAOnes + " разряд 3");
-        } else if (numAHundreds == numBHundreds && numATens != numBTens && numAOnes == numBOnes) {
-            System.out.println("Исходные числа " + numA + " и " + numB + "\n одинаковые цифры: " + 
-                    numAHundreds + " и " + numAOnes + " разряды 1 и 3");
+        num1 = 123;
+        num2 = 456;
+        int num1Hundreds = num1 / 100;
+        int num1Tens = num1 / 10 % 10;
+        int num1Ones = num1 % 10;
+        int num2Hundreds = num2 / 100;
+        int num2Tens = num2 / 10 % 10;
+        int num2Ones = num2 % 10;
+        System.out.println("Исходные числа " + num1 + " и " + num2);
+        if (num1Hundreds == num2Hundreds) {
+            System.out.println("Одинаковые цифры: " + num1Hundreds + " разряд 1");
+        }
+        if (num1Tens == num2Tens) {
+            System.out.println("Одинаковые цифры: " + num1Tens + " разряд 2");
+        }
+        if (num1Ones == num2Ones) {
+            System.out.println("Одинаковые цифры: " + num1Ones + " разряд 3");
+        }
+        if (num1Hundreds != num2Hundreds && num1Tens != num2Tens && num1Ones != num2Ones) {
+            System.out.println("Все цифры в разрядах разные");
         }
 
         System.out.println("\n5.Определение символа по его коду \n");
@@ -106,20 +94,17 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6.Подсчет суммы вклада и начисленных банком %\n");
         int depositAmount = 300000;
-        System.out.println("Сумма вклада = " + depositAmount + " руб.");
+        int percent = 0;
         if (depositAmount < 100000) {
-            int accrual = (depositAmount / 100) * 5;
-            System.out.println("Начисленный процент " + accrual + 
-                "\nИтоговая сумма " + (accrual + depositAmount));
+            percent = 5;
         } else if (depositAmount <= 300000 && depositAmount >= 100000) {
-            int accrual = (depositAmount / 100) * 7;
-            System.out.println("Начисленный процент " + accrual + 
-                "\nИтоговая сумма " + (accrual + depositAmount));
+            percent = 7;
         } else if (depositAmount > 300000) {
-            int accrual = (depositAmount / 100) * 10;
-            System.out.println("Начисленный процент " + accrual + 
-                "\nИтоговая сумма " + (accrual + depositAmount));
+            percent = 10;
         }
+        System.out.println("Сумма вклада = " + depositAmount + " руб.");
+        System.out.println("Начисленный процент " + ((depositAmount / 100) * percent) + 
+                "\nИтоговая сумма " + ((depositAmount / 100) * percent + depositAmount));
 
         System.out.println("\n7.Определение оценки по предметам\n");
         int percentHistory = 59;
