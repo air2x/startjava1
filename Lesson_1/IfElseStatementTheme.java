@@ -59,7 +59,7 @@ public class IfElseStatementTheme {
 
         System.out.println("\n4.Поиск одинаковых цифр в числах \n");
         num1 = 123;
-        num2 = 444;
+        num2 = 124;
         int num1Hundreds = num1 / 100;
         int num1Tens = num1 / 10 % 10;
         int num1Ones = num1 % 10;
@@ -69,15 +69,16 @@ public class IfElseStatementTheme {
         System.out.println("Исходные числа " + num1 + " и " + num2);
         if (num1Hundreds != num2Hundreds && num1Tens != num2Tens && num1Ones != num2Ones) {
             System.out.println("Все цифры в разрядах разные");
-        }
-        if (num1Hundreds == num2Hundreds) {
-            System.out.println("Одинаковые цифры: " + num1Hundreds + " разряд 1");
-        }
-        if (num1Tens == num2Tens) {
-            System.out.println("Одинаковые цифры: " + num1Tens + " разряд 2");
-        }
-        if (num1Ones == num2Ones) {
-            System.out.println("Одинаковые цифры: " + num1Ones + " разряд 3");
+        } else {
+            if (num1Hundreds == num2Hundreds) {
+                System.out.println("Одинаковые цифры: " + num1Hundreds + " разряд 1");
+            }
+            if (num1Tens == num2Tens) {
+                System.out.println("Одинаковые цифры: " + num1Tens + " разряд 2");
+            }
+            if (num1Ones == num2Ones) {
+                System.out.println("Одинаковые цифры: " + num1Ones + " разряд 3");
+            }
         }
 
         System.out.println("\n5.Определение символа по его коду \n");
@@ -131,11 +132,11 @@ public class IfElseStatementTheme {
         int rent = 5000;
         int revenue = 13000;
         int costPrice = 9000;
-        int profitMonth = revenue - rent - costPrice;
+        int profitMonth = (revenue - rent - costPrice) * 12;
         if (profitMonth > 0) {
-            System.out.println("Прибыль за год: +" + profitMonth * 12 + " руб.");
+            System.out.println("Прибыль за год: +" + profitMonth + " руб.");
         } else {
-            System.out.println("Прибыль за год: " + profitMonth * 12 + " руб.");
+            System.out.println("Прибыль за год: " + profitMonth + " руб.");
         }
 
         System.out.println("\n9.Подсчет количества банкнот\n");
@@ -148,19 +149,18 @@ public class IfElseStatementTheme {
         int neededBanknotesNominal100 = sumNeeded / 100;
         if (neededBanknotesNominal1 > banknotesNominal1) {
             System.out.println("Не хватает банкнот для выполнения операции");
-        }
-        if (neededBanknotesNominal100 > banknotesNominal100) {
-            neededBanknotesNominal10 += (neededBanknotesNominal100 -
-                banknotesNominal100) * 10;
-        }
-        if (neededBanknotesNominal10 > banknotesNominal10) {
-            neededBanknotesNominal1 += (neededBanknotesNominal10 -
-                banknotesNominal10) * 10;
-        }
-        if (neededBanknotesNominal1 <= banknotesNominal1) {
-            System.out.println("Номиналы банкнот\n100 - " + neededBanknotesNominal100 + 
-                    "\n10 - " + neededBanknotesNominal10 + "\n1 - " + 
-                    neededBanknotesNominal1 + "\nСумма: " + sumNeeded);
+        } else {
+            if (neededBanknotesNominal100 > banknotesNominal100) {
+                neededBanknotesNominal10 += (neededBanknotesNominal100 - banknotesNominal100) * 10;
+            }
+            if (neededBanknotesNominal10 > banknotesNominal10) {
+                neededBanknotesNominal1 += (neededBanknotesNominal10 - banknotesNominal10) * 10;
+            }
+            if (neededBanknotesNominal1 <= banknotesNominal1) {
+                System.out.println("Номиналы банкнот\n100 - " + neededBanknotesNominal100 + 
+                        "\n10 - " + neededBanknotesNominal10 + "\n1 - " + neededBanknotesNominal1 +
+                        "\nСумма: " + sumNeeded);
+            }
         }
     }
 }
