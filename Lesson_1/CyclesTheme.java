@@ -20,17 +20,21 @@ public class CyclesTheme {
 
         System.out.println("\n 2. Вывод чисел в интервале (min и max) в порядке убывания");
         int num1 = 10;
-        int num2 = 5;
-        int num3 = -1;
+        int num2 = -1;
+        int num3 = 5;
         int min = num3;
         int max = num1;
         if (min > num1) {
             min = num1;
-        } else if (min > num2) {
+        }
+        if (min > num2) {
             min = num2;
         }
         if (max < num2) {
             max = num2;
+        }
+        if (max < num3){
+            max = num3;
         }
         for (int i = max - 1; i > min; i--) {
             System.out.print(i + " ");
@@ -102,17 +106,17 @@ public class CyclesTheme {
         int maxCharNum = 3;
         int numColumns = 1 - maxCharNum;
         do {
-            int charNum = 1;
+            int charNum = 3;
             int revers = numColumns;
             if (revers < 0) {
                 revers = -revers;
             }
             do {
                 System.out.print("$");
-                ++charNum;
+                charNum++;
             } while (charNum <= maxCharNum - revers);
             System.out.println();
-            ++numColumns;
+            numColumns++;
         } while (numColumns <= maxCharNum - 1);
 
         System.out.println("\n7. Отображение ASCII-символов");
@@ -141,40 +145,43 @@ public class CyclesTheme {
 
         System.out.println("\n9. Определение, является ли число счастливым");
         num = 411331;
-        int sum123 = 0;
-        int sum456 = 0;
+        int sumLeftHalfNum = 0;
+        int sumRightHalfNum = 0;
         int remains = 0;
-        int revSum123 = 0;
-        int revSum456 = 0;
+        int onesLeftHalfNum = 0;
+        int onesRightHalfNum = 0;
         revNum = 0;
         for (int i = 0; i < 6; i++) {
             remains = num % 10;
             revNum = revNum * 10 + remains;
             if (i < 3) {
-                sum123 += remains;
-                revSum123 = revSum123 * 10 + remains;
-            }
-            if (i >= 3) {
-                sum456 += remains;
-                revSum456 = revSum456 * 10 + remains;
+                sumLeftHalfNum += remains;
+                onesLeftHalfNum = onesLeftHalfNum * 10 + remains;
+            } else {
+                sumRightHalfNum += remains;
+                onesRightHalfNum = onesRightHalfNum * 10 + remains;
             }
             num /= 10;
         }
-        System.out.println("Сумма цифр " + revSum123 + " = " + sum123 + "\nСумма цифр " +
-            revSum456 + " = " + sum456);
-        if (sum123 == sum456) {
+        System.out.println("Сумма цифр " + onesLeftHalfNum + " = " + sumLeftHalfNum + "\nСумма цифр " +
+                onesRightHalfNum + " = " + sumRightHalfNum);
+        if (sumLeftHalfNum == sumRightHalfNum) {
             System.out.println("Число счастливое");
         } else {
             System.out.println("Число не счастливое");
         }
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
-        for (int i = 1; i < 9; i++) {
-            for (int j = 1; j < 9; j++) {
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <= 9; j++) {
                 if (j * i == 1) {
-                    System.out.print("    ");
+                    System.out.print("__|");
+                } else if (j == 1) {
+                    System.out.print(j * i + " |");
+                } else if (i == 1) {
+                    System.out.print("__" + j * i);
                 } else {
-                    System.out.printf("%4d", i * j);
+                    System.out.printf("%3d", j * i);
                 }
             }
             System.out.println();
