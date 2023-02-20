@@ -1,32 +1,26 @@
 public class Calculator {
 
     public static void main(String[] args) {
-        int numFirst = 15;
+        int numFirst = 2;
         int numSecond = 4;
         int result = 0;
-        char signPlus = '+';
-        char signMinus = '-';
-        char signMultiplication = '*';
-        char signDivision = '/';
-        char signDegree = '^';
-        char signRemainder = '%';
-        char signNeeded = '^';
-        if (signNeeded == signPlus) {
+        char mathSign = '%';
+        if (mathSign == '+') {
             result = numFirst + numSecond;
-        } else if (signNeeded == signMinus) {
+        } else if (mathSign == '-') {
             result = numFirst - numSecond;
-        } else if (signNeeded == signMultiplication) {
+        } else if (mathSign == '*') {
             result = numFirst * numSecond;
-        } else if (signNeeded == signDivision) {
+        } else if (mathSign == '/') {
             result = numFirst / numSecond;
-        } else if (signNeeded == signDegree) {
+        } else if (mathSign == '^') {
             result = numFirst;
             for (int i = 1; i < numSecond; i++) {
                 result *= numFirst;
             }
-        } else if (signNeeded == signRemainder) {
+        } else if (mathSign == '%') {
             result = numFirst % numSecond;
         }
-        System.out.println(numFirst + " " + signNeeded + " " + numSecond + " = " + result);
+        System.out.println(numFirst + " " + mathSign + " " + numSecond + " = " + result);
     }
 }
