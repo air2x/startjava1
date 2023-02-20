@@ -1,26 +1,26 @@
 public class Calculator {
 
     public static void main(String[] args) {
-        int numFirst = 2;
-        int numSecond = 4;
+        int num1 = 2;
+        int num2 = 4;
         int result = 0;
         char mathSign = '%';
         if (mathSign == '+') {
-            result = numFirst + numSecond;
+            result = num1 + num2;
         } else if (mathSign == '-') {
-            result = numFirst - numSecond;
+            result = num1 - num2;
         } else if (mathSign == '*') {
-            result = numFirst * numSecond;
+            result = num1 * num2;
         } else if (mathSign == '/') {
-            result = numFirst / numSecond;
+            result = num1 / num2;
         } else if (mathSign == '^') {
-            result = numFirst;
-            for (int i = 1; i < numSecond; i++) {
-                result *= numFirst;
+            result = num1;
+            for (int i = 1; i < num2; i++) {
+                result *= num1;
             }
         } else if (mathSign == '%') {
-            result = numFirst % numSecond;
+            result = num1 % num2;
         }
-        System.out.println(numFirst + " " + mathSign + " " + numSecond + " = " + result);
+        System.out.println(num1 + " " + mathSign + " " + num2 + " = " + result);
     }
 }
