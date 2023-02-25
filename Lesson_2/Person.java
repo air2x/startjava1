@@ -6,23 +6,23 @@ public class Person {
     double weight = 95.8;
     int age = 28;
 
-    void walk () {
+    void walk() {
         
     }
 
-    void sit () {
+    void sit() {
         
     }
 
-    void run () {
+    void run() {
         
     }
 
-    void talk () {
+    void talk() {
         
     }
 
-    void learnJava () {
-
+    void learnJava() {
+        
     }
 }
