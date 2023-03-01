@@ -21,10 +21,6 @@ public class Calculator {
         this.num2 = num2;
     }
 
-    public int getResult() {
-        return result;
-    }
-
     public void setResult(int result) {
         this.result = result;
     }
@@ -37,8 +33,8 @@ public class Calculator {
         this.mathSign = mathSign;
     }
 
-    public void calculated() {
-            switch (mathSign) {
+    public void calculat() {
+        switch (mathSign) {
             case '+' :
                 result = num1 + num2;
                 break;
@@ -58,7 +54,6 @@ public class Calculator {
                 result = num1;
                 for (int i = 1; i < num2; i++) {
                     result *= num1;
-                break;
             }
         }
         System.out.println("Результат вычислений " + result);
