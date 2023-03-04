@@ -2,7 +2,7 @@ public class Calculator {
 
     private int num1;
     private int num2;
-    private int result;
+    public int result;
     private char mathSign;
 
     public void setNum1(int num1) {
