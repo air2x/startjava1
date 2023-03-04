@@ -9,12 +9,10 @@ public class Jaeger {
     private int strength;
     private int armor;
 
-    public Jaeger() {
-
-    }
+    public Jaeger() {}
 
     public Jaeger(String name, String mark, String origin, double height, double weight, int speed, 
-        int strength, int armor) {
+            int strength, int armor) {
         this.name = name;
         this.mark = mark;
         this.origin = origin;
@@ -36,7 +34,6 @@ public class Jaeger {
     public void setOrigin(String origin) {
         this.origin = origin;
     }
-
 
     public void setHeight(double height) {
         this.height = height;
