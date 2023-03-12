@@ -1,28 +1,29 @@
+package com.startjava.lesson_2_3.person;
 public class Person {
 
     String name = "Jon";
     String gender = "man";
     double height = 1.85;
     double weight = 95.8;
-    int age = 29;
+    int age = 28;
 
-    void walk () {
+    void walk() {
         
     }
 
-    void sit () {
+    void sit() {
         
     }
 
-    void run () {
+    void run() {
         
     }
 
-    void talk () {
+    void talk() {
         
     }
 
-    void learnJava () {
-
+    void learnJava() {
+        
     }
 }

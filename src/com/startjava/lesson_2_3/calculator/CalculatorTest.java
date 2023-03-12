@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -13,14 +15,12 @@ public class CalculatorTest {
             calculator.setMathSign(scanner.next().charAt(0));
             System.out.println("Введите второе число: ");
             calculator.setNum2(scanner.nextInt());
-            calculator.calculated();
+            calculator.calculate();
             scanner.nextLine();
-            System.out.println("Хотите продолжить вычисления? [yes/no]");
-            answer = scanner.nextLine();
-            while (!(answer.equals("no")) && !(answer.equals("yes"))) {
+            do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]");
                 answer = scanner.nextLine();
-            }
+            } while (!answer.equals("no") && !answer.equals("yes"));
         }
     }
 }
