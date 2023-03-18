@@ -1,1 +1,1 @@
--cp C:/java/StartJava/out com.startjava.lesson_2_3.calculator.CalculatorTest
+-classpath .\out com.startjava.lesson_2_3.calculator.CalculatorTest
