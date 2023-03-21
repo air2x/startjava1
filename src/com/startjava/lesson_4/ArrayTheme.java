@@ -8,10 +8,10 @@ public class ArrayTheme {
         int[] intNums = {4, 2, 1, 7, 5, 3, 6};
         int len = intNums.length;
         printIntNums(intNums);
-        for (int i = 0; i < len; i++) {
-            int temp = len--;
-            intNums[len] = intNums[i];
-            intNums[i] = temp;
+        for (int i = 0; i < len / 2; i++) {
+            int temp = intNums[i];
+            intNums[i] = intNums[len - i - 1];
+            intNums[len - i - 1] = temp;
         }
         printIntNums(intNums);
 
@@ -24,7 +24,7 @@ public class ArrayTheme {
         int productNum = 1;
         for (int i = 1; i < len - 1; i++) {
             productNum *= intNums[i];
-            System.out.print(intNums[i] + (intNums[i] == intNums[len - 2] ? " " : " * "));
+            System.out.print(intNums[i] + (i == len - 2 ? " " : " * "));
         }
         System.out.println("= " + productNum + "\n" + intNums[0] + " " + intNums[9]);
 
@@ -33,18 +33,18 @@ public class ArrayTheme {
         for (int i = 0; i < doubleNums.length; i++) {
             doubleNums[i] = Math.random();
         }
-        int midCell = doubleNums.length / 2;
+        double middleNum = doubleNums[doubleNums.length / 2];
         System.out.println("Исходный массив:");
-        printDubArr(doubleNums);
+        printDoubleNums(doubleNums);
         System.out.println("\nИзмененный массив:");
         int count = 0;
         for (int i = 0; i < doubleNums.length; i++) {
-            if (doubleNums[i] > midCell) {
+            if (doubleNums[i] > middleNum) {
                 doubleNums[i] = 0;
                 count++;
             }
         }
-        printDubArr(doubleNums);
+        printDoubleNums(doubleNums);
         System.out.println("\nКоличество обнуленных ячеек: " + count);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
@@ -65,12 +65,10 @@ public class ArrayTheme {
         len = intNums.length;
         for (int i = 0; i < len; i++) {
             intNums[i] = 60 + (int)(Math.random() * 40);
-            for (int j = 0; j < len; j++) {
-                if (i == j) {
-                    continue;
-                }
+            for (int j = i - 1; j >= 0; j--) {
                 while (intNums[i] == intNums[j]) {
                     intNums[i] = 60 + (int)(Math.random() * 40);
+                    j = i - 1;
                 }
             }
         }
@@ -93,9 +91,9 @@ public class ArrayTheme {
             }
         }
         String[] strArr2 = new String[count];
-        System.arraycopy(strArr, 1, strArr2, 0, 1);
-        System.arraycopy(strArr, 3, strArr2, 1, 3);
-        System.arraycopy(strArr, 7, strArr2, 4, 3);
+//        System.arraycopy(strArr, 1, strArr2, 0, 1);
+//        System.arraycopy(strArr, 3, strArr2, 1, 3);
+//        System.arraycopy(strArr, 7, strArr2, 4, 3);
         printStrArr(strArr);
         printStrArr(strArr2);
     }
@@ -107,12 +105,12 @@ public class ArrayTheme {
         }
     }
 
-    private static void printDubArr(double[] dubArr) {
-        for (int i = 0; i < dubArr.length; i++) {
+    private static void printDoubleNums(double[] doubleNums) {
+        for (int i = 0; i < doubleNums.length; i++) {
             if (i == 8) {
                 System.out.println();
             }
-            System.out.printf("%7.3f", dubArr[i]);
+            System.out.printf("%7.3f", doubleNums[i]);
         }
     }
 
