@@ -8,10 +8,11 @@ public class ArrayTheme {
         int[] intNums = {4, 2, 1, 7, 5, 3, 6};
         int len = intNums.length;
         printIntNums(intNums);
-        for (int i = 0; i < len / 2; i++) {
+        for (int i = 0; i < len; i++) {
+            len--;
             int temp = intNums[i];
-            intNums[i] = intNums[len - i - 1];
-            intNums[len - i - 1] = temp;
+            intNums[i] = intNums[len];
+            intNums[len] = temp;
         }
         printIntNums(intNums);
 
@@ -30,16 +31,17 @@ public class ArrayTheme {
 
         System.out.println("\n3. Удаление элементов массива");
         double[] doubleNums = new double[15];
-        for (int i = 0; i < doubleNums.length; i++) {
+        len = doubleNums.length;
+        for (int i = 0; i < len; i++) {
             doubleNums[i] = Math.random();
         }
-        double middleNum = doubleNums[doubleNums.length / 2];
+        double middleCellNum = doubleNums[len / 2];
         System.out.println("Исходный массив:");
         printDoubleNums(doubleNums);
         System.out.println("\nИзмененный массив:");
         int count = 0;
-        for (int i = 0; i < doubleNums.length; i++) {
-            if (doubleNums[i] > middleNum) {
+        for (int i = 0; i < len; i++) {
+            if (doubleNums[i] > middleCellNum) {
                 doubleNums[i] = 0;
                 count++;
             }
@@ -64,11 +66,10 @@ public class ArrayTheme {
         intNums = new int[30];
         len = intNums.length;
         for (int i = 0; i < len; i++) {
-            intNums[i] = 60 + (int)(Math.random() * 40);
-            for (int j = i - 1; j >= 0; j--) {
+            for (int j = 0; j < i; j++) {
                 while (intNums[i] == intNums[j]) {
                     intNums[i] = 60 + (int)(Math.random() * 40);
-                    j = i - 1;
+                    j = 0;
                 }
             }
         }
