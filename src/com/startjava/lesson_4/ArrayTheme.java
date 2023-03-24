@@ -8,8 +8,7 @@ public class ArrayTheme {
         int[] intNums = {4, 2, 1, 7, 5, 3, 6};
         int len = intNums.length;
         printIntNums(intNums);
-        for (int i = 0; i < len; i++) {
-            len--;
+        for (int i = 0; i < len--; i++) {
             int temp = intNums[i];
             intNums[i] = intNums[len];
             intNums[len] = temp;
@@ -22,12 +21,12 @@ public class ArrayTheme {
         for (int i = 0; i < len; i++) {
             intNums[i] = i;
         }
-        int productNum = 1;
+        int productNums = 1;
         for (int i = 1; i < len - 1; i++) {
-            productNum *= intNums[i];
+            productNums *= intNums[i];
             System.out.print(intNums[i] + (i == len - 2 ? " " : " * "));
         }
-        System.out.println("= " + productNum + "\n" + intNums[0] + " " + intNums[9]);
+        System.out.println("= " + productNums + "\n" + intNums[0] + " " + intNums[9]);
 
         System.out.println("\n3. Удаление элементов массива");
         double[] doubleNums = new double[15];
@@ -66,10 +65,13 @@ public class ArrayTheme {
         intNums = new int[30];
         len = intNums.length;
         for (int i = 0; i < len; i++) {
+            int randomNum = 60 + (int)(Math.random() * 40);
+            if (randomNum != intNums[i]) {
+                intNums[i] = randomNum;
+            }
             for (int j = 0; j < i; j++) {
-                while (intNums[i] == intNums[j]) {
-                    intNums[i] = 60 + (int)(Math.random() * 40);
-                    j = 0;
+                if (intNums[j] == randomNum) {
+                    i--;
                 }
             }
         }
@@ -84,14 +86,28 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n6. Копирование не пустых строк");
-        String[] strArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] strArr = {"FF", "G", ""};
         count = 0;
         for (String s : strArr) {
             if (!s.isBlank()) {
                 count++;
             }
         }
+        System.out.println(count);
         String[] strArr2 = new String[count];
+        count = 0;
+        for (int i = 0; i < strArr.length; i++) {
+            if (!strArr[i].isBlank()) {
+                count++;
+            } else {
+                count = 0;
+            }
+            for (int j = 0; j < strArr2.length; j++) {
+                if (strArr2[j] == null) {
+                    System.arraycopy(strArr, i, strArr2, j, count);
+                }
+            }
+        }
 //        System.arraycopy(strArr, 1, strArr2, 0, 1);
 //        System.arraycopy(strArr, 3, strArr2, 1, 3);
 //        System.arraycopy(strArr, 7, strArr2, 4, 3);
