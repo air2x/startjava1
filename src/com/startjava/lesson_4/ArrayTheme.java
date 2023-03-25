@@ -86,31 +86,31 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n6. Копирование не пустых строк");
-        String[] strArr = {"FF", "G", ""};
+        String[] strArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         count = 0;
         for (String s : strArr) {
             if (!s.isBlank()) {
                 count++;
             }
         }
-        System.out.println(count);
         String[] strArr2 = new String[count];
         count = 0;
+        int startNum = 0;
         for (int i = 0; i < strArr.length; i++) {
             if (!strArr[i].isBlank()) {
                 count++;
+                if (count == 1) {
+                    startNum = i;
+                }
             } else {
-                count = 0;
-            }
-            for (int j = 0; j < strArr2.length; j++) {
-                if (strArr2[j] == null) {
-                    System.arraycopy(strArr, i, strArr2, j, count);
+                for (int j = 0; j < strArr2.length; j++) {
+                    if (strArr2[j] == null) {
+                        System.arraycopy(strArr, startNum, strArr2, j, count);
+                        count = 0;
+                    }
                 }
             }
         }
-//        System.arraycopy(strArr, 1, strArr2, 0, 1);
-//        System.arraycopy(strArr, 3, strArr2, 1, 3);
-//        System.arraycopy(strArr, 7, strArr2, 4, 3);
         printStrArr(strArr);
         printStrArr(strArr2);
     }
