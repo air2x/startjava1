@@ -1,6 +1,7 @@
 package com.startjava.lesson_2_3_4.array;
 
 import java.util.Arrays;
+
 public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
