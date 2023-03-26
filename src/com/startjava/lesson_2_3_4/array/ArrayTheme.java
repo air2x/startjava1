@@ -1,7 +1,6 @@
-package com.startjava.lesson_4;
+package com.startjava.lesson_2_3_4.array;
 
 import java.util.Arrays;
-
 public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
@@ -66,12 +65,11 @@ public class ArrayTheme {
         len = intNums.length;
         for (int i = 0; i < len; i++) {
             int randomNum = 60 + (int)(Math.random() * 40);
-            if (randomNum != intNums[i]) {
-                intNums[i] = randomNum;
-            }
-            for (int j = 0; j < i; j++) {
+            for (int j = i; j >= 0; j--) {
                 if (intNums[j] == randomNum) {
-                    i--;
+                    i = 0;
+                } else {
+                    intNums[i] = randomNum;
                 }
             }
         }
@@ -86,33 +84,34 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n6. Копирование не пустых строк");
-        String[] strArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         count = 0;
-        for (String s : strArr) {
+        for (String s : srcStrings) {
             if (!s.isBlank()) {
                 count++;
             }
         }
-        String[] strArr2 = new String[count];
+        String[] destStrings = new String[count];
         count = 0;
         int startNum = 0;
-        for (int i = 0; i < strArr.length; i++) {
-            if (!strArr[i].isBlank()) {
+        for (int i = 0; i < srcStrings.length; i++) {
+            if (!srcStrings[i].isBlank()) {
                 count++;
                 if (count == 1) {
                     startNum = i;
                 }
             } else {
-                for (int j = 0; j < strArr2.length; j++) {
-                    if (strArr2[j] == null) {
-                        System.arraycopy(strArr, startNum, strArr2, j, count);
+                for (int j = 0; j < destStrings.length; j++) {
+                    if (destStrings[j] == null) {
+                        System.arraycopy(srcStrings, startNum, destStrings, j, count);
                         count = 0;
+                        break;
                     }
                 }
             }
         }
-        printStrArr(strArr);
-        printStrArr(strArr2);
+        printStrArr(srcStrings);
+        printStrArr(destStrings);
     }
 
     private static void printIntNums(int[] intNums) {
