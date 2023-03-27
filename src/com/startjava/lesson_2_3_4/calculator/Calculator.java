@@ -2,11 +2,15 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    public static String mathExpression;
+    private static String mathExpression;
 
-    static double result;
+    public static void setMathExpression(String mathExpression) {
+        Calculator.mathExpression = mathExpression;
+    }
 
-    public static double calculate() {
+    double result;
+
+    public double calculate() {
         String[] values = mathExpression.split(" ");
         int num1 = Integer.parseInt(values[0]);
         int num2 = Integer.parseInt(values[2]);
