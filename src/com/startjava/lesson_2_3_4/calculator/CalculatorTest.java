@@ -10,7 +10,7 @@ public class CalculatorTest {
         String answer = "yes";
         while (answer.equals("yes")) {
             System.out.println("Введите математическое выражение: ");
-            Calculator.setMathExpression(scanner.nextLine());
+            calculator.setMathExpression(scanner.nextLine());
             System.out.println("Результат вычислений ");
             if (calculator.calculate() == 0) {
                 System.out.printf("%.0f", calculator.calculate());

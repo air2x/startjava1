@@ -2,10 +2,10 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    private static String mathExpression;
+    private String mathExpression;
 
-    public static void setMathExpression(String mathExpression) {
-        Calculator.mathExpression = mathExpression;
+    public void setMathExpression(String mathExpression) {
+        this.mathExpression = mathExpression;
     }
 
     double result;
