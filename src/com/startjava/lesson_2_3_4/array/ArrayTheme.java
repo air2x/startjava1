@@ -65,14 +65,14 @@ public class ArrayTheme {
         intNums = new int[30];
         len = intNums.length;
         for (int i = 0; i < len; i++) {
-            int randomNum = 60 + (int)(Math.random() * 40);
+            int randomNum = 60 + (int) (Math.random() * 40);
             for (int j = i; j >= 0; j--) {
                 if (intNums[j] == randomNum) {
                     i = 0;
-                } else {
-                    intNums[i] = randomNum;
+                    break;
                 }
             }
+            intNums[i] = randomNum;
         }
         count = 0;
         Arrays.sort(intNums);
@@ -96,7 +96,9 @@ public class ArrayTheme {
         count = 0;
         int startNum = 0;
         for (int i = 0; i < srcStrings.length; i++) {
-            if (!srcStrings[i].isBlank()) {
+            if (srcStrings[i].isBlank() && i == 0) {
+                continue;
+            } else if (!srcStrings[i].isBlank()) {
                 count++;
                 if (count == 1) {
                     startNum = i;
