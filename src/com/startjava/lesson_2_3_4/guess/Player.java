@@ -1,16 +1,23 @@
 package com.startjava.lesson_2_3_4.guess;
 
-import java.util.Scanner;
-
 public class Player {
 
-    private String name;
+    private final String name;
+    private int[] num;
 
     public Player(String name) {
         this.name = name;
     }
 
-   public String getName() {
+    public int[] getNum() {
+        return num;
+    }
+
+    public void setNum(int[] num) {
+        this.num = num;
+    }
+
+    public String getName() {
         return name;
     }
 }
