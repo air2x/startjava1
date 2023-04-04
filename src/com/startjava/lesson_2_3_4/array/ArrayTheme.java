@@ -52,7 +52,7 @@ public class ArrayTheme {
         char[] alphabet = new char[26];
         len = alphabet.length;
         for (int i = 0; i < len; i++) {
-            alphabet[i] =  (char) ('A' + i);
+            alphabet[i] = (char) ('A' + i);
         }
         for (int i = len - 1; i >= 0; i--) {
             for (int j = len - 1; j >= i; j--) {
@@ -65,11 +65,16 @@ public class ArrayTheme {
         intNums = new int[30];
         len = intNums.length;
         for (int i = 0; i < len; i++) {
-            int randomNum = 60 + (int) (Math.random() * 40);
-            for (int j = i; j >= 0; j--) {
-                if (intNums[j] == randomNum) {
-                    i = 0;
-                    break;
+            boolean flag = true;
+            int randomNum = 0;
+            while (flag) {
+                randomNum = 60 + (int) (Math.random() * 40);
+                for (int j = 0; j <= i; j++) {
+                    if (intNums[j] == randomNum) {
+                        break;
+                    } else if (j == i) {
+                        flag = false;
+                    }
                 }
             }
             intNums[i] = randomNum;
@@ -96,9 +101,7 @@ public class ArrayTheme {
         count = 0;
         int startNum = 0;
         for (int i = 0; i < srcStrings.length; i++) {
-            if (srcStrings[i].isBlank() && i == 0) {
-                continue;
-            } else if (!srcStrings[i].isBlank()) {
+            if (!srcStrings[i].isBlank()) {
                 count++;
                 if (count == 1) {
                     startNum = i;
