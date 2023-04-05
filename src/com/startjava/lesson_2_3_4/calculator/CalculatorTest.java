@@ -12,7 +12,7 @@ public class CalculatorTest {
                 System.out.println("Введите математическое выражение: ");
                 String mathExpression = scanner.nextLine();
                 double result = Calculator.calculate(mathExpression);
-                System.out.printf(((result == 0) ? "%.0f\n" : "%.3f\n"), result);
+                System.out.printf(((result % 1 == 0) ? "%.0f\n" : "%.3f\n"), result);
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]");
             answer = scanner.nextLine();
