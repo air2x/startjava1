@@ -65,15 +65,16 @@ public class ArrayTheme {
         intNums = new int[30];
         len = intNums.length;
         for (int i = 0; i < len; i++) {
-            boolean flag = true;
+            boolean unique = true;
             int randomNum = 0;
-            while (flag) {
+            while (unique) {
                 randomNum = 60 + (int) (Math.random() * 40);
                 for (int j = 0; j <= i; j++) {
                     if (intNums[j] == randomNum) {
                         break;
-                    } else if (j == i) {
-                        flag = false;
+                    }
+                    if (j == i) {
+                        unique = false;
                     }
                 }
             }
