@@ -1,5 +1,6 @@
 package com.startjava.lesson_2_3_4.guess;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumberTest {
@@ -14,8 +15,14 @@ public class GuessNumberTest {
         Player player2 = new Player(name);
         GuessNumber game = new GuessNumber(player1, player2);
         String answer = "yes";
+        int count = 0;
         do {
+            if (count > 0) {
+                Arrays.fill(player1.getNum(), 0);
+                Arrays.fill(player2.getNum(), 0);
+            }
             if (answer.equals("yes")) {
+                count++;
                 game.start();
             }
             System.out.println("\nХотите продолжить игру? [yes/no]");

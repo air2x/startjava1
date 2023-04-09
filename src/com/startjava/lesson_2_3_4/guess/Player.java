@@ -1,5 +1,7 @@
 package com.startjava.lesson_2_3_4.guess;
 
+import java.util.Arrays;
+
 public class Player {
 
     private final String name;
@@ -9,15 +11,29 @@ public class Player {
         this.name = name;
     }
 
-    public int[] getNum() {
-        return num;
-    }
-
-    public void setNum(int[] num) {
-        this.num = num;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public int[] getNum() {
+        int count = 0;
+        for (int j : num) {
+            if (j != 0) {
+                count++;
+            }
+        }
+        return Arrays.copyOf(num, count);
+    }
+
+    public void setNum(int value) {
+        if (num == null) {
+            num = new int[1];
+            num[0] = value;
+        } else {
+            int[] newNum = new int[num.length + 1];
+            System.arraycopy(num, 0, newNum, 0, num.length);
+            newNum[newNum.length - 1] = value;
+            num = newNum;
+        }
     }
 }
