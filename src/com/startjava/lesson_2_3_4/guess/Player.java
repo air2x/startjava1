@@ -5,35 +5,41 @@ import java.util.Arrays;
 public class Player {
 
     private final String name;
-    private int[] num;
+    private final int[] nums = new int[10];
+    private int numAttempt = 0;
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public int getNumAttempt() {
+        return numAttempt;
+    }
+
+    public void setNumAttempt(int numAttempt) {
+        this.numAttempt = numAttempt;
     }
 
     public String getName() {
         return name;
     }
 
-    public int[] getNum() {
-        int count = 0;
-        for (int j : num) {
-            if (j != 0) {
-                count++;
+    public int[] getNums() {
+        numAttempt = 0;
+        for (int num : nums) {
+            if (num != 0) {
+                numAttempt++;
             }
         }
-        return Arrays.copyOf(num, count);
+        return Arrays.copyOf(nums, numAttempt);
     }
 
-    public void setNum(int value) {
-        if (num == null) {
-            num = new int[1];
-            num[0] = value;
-        } else {
-            int[] newNum = new int[num.length + 1];
-            System.arraycopy(num, 0, newNum, 0, num.length);
-            newNum[newNum.length - 1] = value;
-            num = newNum;
-        }
+    public void addNum(int num, int count) {
+        nums[count] = num;
+    }
+
+    public void newGame() {
+        Arrays.fill(nums, 0);
+        numAttempt = 0;
     }
 }
