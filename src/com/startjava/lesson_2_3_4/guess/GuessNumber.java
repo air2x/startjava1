@@ -26,14 +26,10 @@ public class GuessNumber {
                 System.out.println("Игрок " + player1.getName() + " угадал число " + num + " с " +
                         (player1.getNumAttempt() + 1) + " попытки");
                 break;
-            } else if (secretNum > num) {
-                System.out.println(num + " меньше, чем загадал компьютер");
-            } else {
-                System.out.println(num + " больше, чем загадал компьютер");
             }
-            if (player1.getNumAttempt() == 10) {
+            System.out.println(num + (secretNum > num ? " меньше, чем загадал компьютер" : " больше, чем загадал компьютер"));
+            if (player1.getNumAttempt() == 9) {
                 System.out.println("У игрока " + player1.getName() + " закончились попытки");
-                break;
             }
             player1.setNumAttempt(player1.getNumAttempt() + 1);
 
@@ -44,12 +40,9 @@ public class GuessNumber {
                 System.out.println("Игрок " + player2.getName() + " угадал число " + num + " с " +
                         (player2.getNumAttempt() + 1) + " попытки");
                 break;
-            } else if (secretNum > num) {
-                System.out.println(num + " меньше, чем загадал компьютер");
-            } else {
-                System.out.println(num + " больше, чем загадал компьютер");
             }
-            if (player2.getNumAttempt() == 10) {
+            System.out.println(num + (secretNum > num ? " меньше, чем загадал компьютер" : " больше, чем загадал компьютер"));
+            if (player2.getNumAttempt() == 9) {
                 System.out.println("У игрока " + player2.getName() + " закончились попытки");
                 break;
             }
