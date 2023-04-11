@@ -18,11 +18,11 @@ public class GuessNumber {
         System.out.println("У каждого игрока по 10 попыток");
         int secretNum = (int) ((Math.random() * 100) + 1);
         while (true) {
-            if (!playerCod(player1.getName(), secretNum, player1.getNumAttempt(), player1)) {
+            if (!playerCode(player1.getName(), secretNum, player1.getNumAttempt(), player1)) {
                 break;
             }
 
-            if (!playerCod(player2.getName(), secretNum, player2.getNumAttempt(), player2) || player2.getNumAttempt() == 10) {
+            if (!playerCode(player2.getName(), secretNum, player2.getNumAttempt(), player2) || player2.getNumAttempt() == 10) {
                 break;
             }
         }
@@ -37,7 +37,7 @@ public class GuessNumber {
         System.out.print(" числа принадлежат игроку " + name + "\n");
     }
 
-    private static boolean playerCod(String name, int secretNum, int numAttempt, Player player) {
+    private static boolean playerCode(String name, int secretNum, int numAttempt, Player player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(name + " введите число");
         int num = scanner.nextInt();
