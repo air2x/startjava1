@@ -6,18 +6,10 @@ public class Player {
 
     private final String name;
     private final int[] nums = new int[10];
-    private int numAttempt = 0;
+    private int numAttempt;
 
     public Player(String name) {
         this.name = name;
-    }
-
-    public int getNumAttempt() {
-        return numAttempt;
-    }
-
-    public void setNumAttempt(int numAttempt) {
-        this.numAttempt = numAttempt;
     }
 
     public String getName() {
@@ -25,21 +17,20 @@ public class Player {
     }
 
     public int[] getNums() {
-        numAttempt = 0;
-        for (int num : nums) {
-            if (num != 0) {
-                numAttempt++;
-            }
-        }
         return Arrays.copyOf(nums, numAttempt);
     }
 
-    public void addNum(int num, int count) {
-        nums[count] = num;
+    public int getNumAttempt() {
+        return numAttempt;
     }
 
-    public void newGame() {
-        Arrays.fill(nums, 0);
+    public void clear() {
+        Arrays.fill(nums, 0, numAttempt, 0);
         numAttempt = 0;
+    }
+
+    public void addNum(int num) {
+        nums[numAttempt] = num;
+        numAttempt++;
     }
 }
