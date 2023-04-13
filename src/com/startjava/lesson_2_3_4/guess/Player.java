@@ -24,13 +24,13 @@ public class Player {
         return numAttempt;
     }
 
-    public void clear() {
-        Arrays.fill(nums, 0, numAttempt, 0);
-        numAttempt = 0;
-    }
-
     public void addNum(int num) {
         nums[numAttempt] = num;
         numAttempt++;
+    }
+
+    public void clear() {
+        Arrays.fill(nums, 0, numAttempt, 0);
+        numAttempt = 0;
     }
 }
