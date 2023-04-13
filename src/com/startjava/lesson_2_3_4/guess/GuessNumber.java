@@ -46,8 +46,15 @@ public class GuessNumber {
 
     private static int enterNum(Player player) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(player.getName() + " введите число");
-        return scanner.nextInt();
+        int num;
+        do {
+            System.out.println(player.getName() + " введите число");
+            num = scanner.nextInt();
+            if (num < 1 || num > 100) {
+                System.out.println("Число не входит в интервал от 1 до 100 включительно");
+            }
+        } while (num < 1 || num > 100);
+        return num;
     }
 
     private static void printPlayerNums(int[] nums, String name) {
