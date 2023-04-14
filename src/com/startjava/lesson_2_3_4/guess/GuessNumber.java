@@ -18,10 +18,10 @@ public class GuessNumber {
         System.out.println("У каждого игрока по 10 попыток");
         int secretNum = (int) ((Math.random() * 100) + 1);
         do {
-            if (!checkPlayerNumPrintResult(secretNum, player1, enterNum(player1))) {
+            if (!isGuessed(secretNum, player1)) {
                 break;
             }
-            if (!checkPlayerNumPrintResult(secretNum, player2, enterNum(player2))) {
+            if (!isGuessed(secretNum, player2)) {
                 break;
             }
         } while (player2.getNumAttempt() != 10);
@@ -29,15 +29,19 @@ public class GuessNumber {
         printPlayerNums(player2.getNums(), player2.getName());
     }
 
-    private static boolean checkPlayerNumPrintResult(int secretNum, Player player, int num) {
-        player.addNum(num);
+    private static boolean isGuessed(int secretNum, Player player) {
+        int num = enterNum(player);
+        return checkNum(secretNum, num, player);
+    }
+
+    private static boolean checkNum(int secretNum, int num, Player player) {
         if (secretNum == num) {
             System.out.println("Игрок " + player.getName() + " угадал число " + num + " с " +
                     player.getNumAttempt() + " попытки");
             return false;
         }
         System.out.println(num + (secretNum > num ?
-                " меньше, чем загадал компьютер" : " больше, " + "чем загадал компьютер"));
+                " меньше, чем загадал компьютер" : " больше, чем загадал компьютер"));
         if (player.getNumAttempt() == 10) {
             System.out.println("У игрока " + player.getName() + " закончились попытки");
         }
@@ -46,15 +50,8 @@ public class GuessNumber {
 
     private static int enterNum(Player player) {
         Scanner scanner = new Scanner(System.in);
-        int num;
-        do {
-            System.out.println(player.getName() + " введите число");
-            num = scanner.nextInt();
-            if (num < 1 || num > 100) {
-                System.out.println("Число не входит в интервал от 1 до 100 включительно");
-            }
-        } while (num < 1 || num > 100);
-        return num;
+        System.out.println(player.getName() + " введите число");
+        return player.addNum(scanner.nextInt());
     }
 
     private static void printPlayerNums(int[] nums, String name) {
