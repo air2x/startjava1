@@ -1,12 +1,11 @@
 package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Player {
 
     private final String name;
-    private static final int[] nums = new int[10];
+    private final int[] nums = new int[10];
     private int numAttempt;
 
     public Player(String name) {
@@ -25,15 +24,14 @@ public class Player {
         return numAttempt;
     }
 
-    public int addNum(int num) {
-        Scanner scanner = new Scanner(System.in);
-        while (num < 1 || num > 100) {
-            System.out.println("Число не входит в интервал от 1 до 100 включительно, введите новое число");
-            num = scanner.nextInt();
+    public boolean addNum(int num) {
+        if (num < 1 || num > 100) {
+            return false;
+        } else {
+            nums[numAttempt] = num;
+            numAttempt++;
+            return true;
         }
-        nums[numAttempt] = num;
-        numAttempt++;
-        return num;
     }
 
     public void clear() {

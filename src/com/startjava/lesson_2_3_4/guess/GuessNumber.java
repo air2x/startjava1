@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private final Player player1;
-    private final Player player2;
+    private static Player player1;
+    private static Player player2;
 
     public GuessNumber(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
+        GuessNumber.player1 = player1;
+        GuessNumber.player2 = player2;
     }
 
     public void start() {
@@ -34,7 +34,24 @@ public class GuessNumber {
         return checkNum(secretNum, num, player);
     }
 
+    private static int enterNum(Player player) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(player.getName() + " введите число");
+        int num = scanner.nextInt();
+        while (!player.addNum(num)) {
+            System.out.println("Число не входит в интервал от 1 до 100 включительно," + player.getName() +
+                    " введите новое число");
+            num = scanner.nextInt();
+        }
+        return num;
+    }
+
     private static boolean checkNum(int secretNum, int num, Player player) {
+        Scanner scanner = new Scanner(System.in);
+        while (num < 1 || num > 100) {
+            System.out.println("Число не входит в интервал от 1 до 100 включительно, введите новое число");
+            num = scanner.nextInt();
+        }
         if (secretNum == num) {
             System.out.println("Игрок " + player.getName() + " угадал число " + num + " с " +
                     player.getNumAttempt() + " попытки");
@@ -46,12 +63,6 @@ public class GuessNumber {
             System.out.println("У игрока " + player.getName() + " закончились попытки");
         }
         return true;
-    }
-
-    private static int enterNum(Player player) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(player.getName() + " введите число");
-        return player.addNum(scanner.nextInt());
     }
 
     private static void printPlayerNums(int[] nums, String name) {
