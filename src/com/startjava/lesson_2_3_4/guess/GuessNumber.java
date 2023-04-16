@@ -6,15 +6,18 @@ public class GuessNumber {
 
     private static Player player1;
     private static Player player2;
+    private static Player player3;
 
-    public GuessNumber(Player player1, Player player2) {
+    public GuessNumber(Player player1, Player player2, Player player3) {
         GuessNumber.player1 = player1;
         GuessNumber.player2 = player2;
+        GuessNumber.player3 = player3;
     }
 
     public void start() {
         player1.clear();
         player2.clear();
+        player3.clear();
         System.out.println("У каждого игрока по 10 попыток");
         int secretNum = (int) ((Math.random() * 100) + 1);
         do {
@@ -24,9 +27,13 @@ public class GuessNumber {
             if (!isGuessed(secretNum, player2)) {
                 break;
             }
-        } while (player2.getNumAttempt() != 10);
+            if (!isGuessed(secretNum, player3)) {
+                break;
+            }
+        } while (player3.getNumAttempt() != 10);
         printPlayerNums(player1.getNums(), player1.getName());
         printPlayerNums(player2.getNums(), player2.getName());
+        printPlayerNums(player3.getNums(), player3.getName());
     }
 
     private static boolean isGuessed(int secretNum, Player player) {
