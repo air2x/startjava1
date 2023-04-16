@@ -4,38 +4,37 @@ import java.util.Arrays;
 
 public class Player {
 
-    private final String name;
-    private final int[] nums = new int[10];
+    final String NAME;
+    final int[] NUMS = new int[10];
     private int numAttempt;
 
     public Player(String name) {
-        this.name = name;
+        NAME = name;
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     public int[] getNums() {
-        return Arrays.copyOf(nums, numAttempt);
+        return Arrays.copyOf(NUMS, numAttempt);
+    }
+
+    public boolean addNum(int num) {
+        if (num < 1 || num > 100) {
+            return false;
+        }
+        NUMS[numAttempt] = num;
+        numAttempt++;
+        return true;
     }
 
     public int getNumAttempt() {
         return numAttempt;
     }
 
-    public boolean addNum(int num) {
-        if (num < 1 || num > 100) {
-            return false;
-        } else {
-            nums[numAttempt] = num;
-            numAttempt++;
-            return true;
-        }
-    }
-
     public void clear() {
-        Arrays.fill(nums, 0, numAttempt, 0);
+        Arrays.fill(NUMS, 0, numAttempt, 0);
         numAttempt = 0;
     }
 }

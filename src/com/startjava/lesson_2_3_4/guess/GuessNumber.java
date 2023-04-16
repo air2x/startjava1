@@ -4,36 +4,36 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private static Player player1;
-    private static Player player2;
-    private static Player player3;
+    final Player[] PLAYERS = new Player[3];
 
-    public GuessNumber(Player player1, Player player2, Player player3) {
-        GuessNumber.player1 = player1;
-        GuessNumber.player2 = player2;
-        GuessNumber.player3 = player3;
+    public GuessNumber(Player... players) {
+        int count = 0;
+        for (Player player : players) {
+            PLAYERS[count] = player;
+            count++;
+        }
     }
 
     public void start() {
-        player1.clear();
-        player2.clear();
-        player3.clear();
+        PLAYERS[0].clear();
+        PLAYERS[1].clear();
+        PLAYERS[2].clear();
         System.out.println("У каждого игрока по 10 попыток");
         int secretNum = (int) ((Math.random() * 100) + 1);
         do {
-            if (!isGuessed(secretNum, player1)) {
+            if (!isGuessed(secretNum, PLAYERS[0])) {
                 break;
             }
-            if (!isGuessed(secretNum, player2)) {
+            if (!isGuessed(secretNum, PLAYERS[1])) {
                 break;
             }
-            if (!isGuessed(secretNum, player3)) {
+            if (!isGuessed(secretNum, PLAYERS[2])) {
                 break;
             }
-        } while (player3.getNumAttempt() != 10);
-        printPlayerNums(player1.getNums(), player1.getName());
-        printPlayerNums(player2.getNums(), player2.getName());
-        printPlayerNums(player3.getNums(), player3.getName());
+        } while (PLAYERS[2].getNumAttempt() != 10);
+        printPlayerNums(PLAYERS[0].getNums(), PLAYERS[0].getName());
+        printPlayerNums(PLAYERS[1].getNums(), PLAYERS[1].getName());
+        printPlayerNums(PLAYERS[2].getNums(), PLAYERS[2].getName());
     }
 
     private static boolean isGuessed(int secretNum, Player player) {
