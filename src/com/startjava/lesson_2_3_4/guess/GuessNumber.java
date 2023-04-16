@@ -31,6 +31,9 @@ public class GuessNumber {
 
     private static boolean isGuessed(int secretNum, Player player) {
         int num = enterNum(player);
+        if (player.getNumAttempt() == 10) {
+            System.out.println("У игрока " + player.getName() + " закончились попытки");
+        }
         return checkNum(secretNum, num, player);
     }
 
@@ -59,9 +62,6 @@ public class GuessNumber {
         }
         System.out.println(num + (secretNum > num ?
                 " меньше, чем загадал компьютер" : " больше, чем загадал компьютер"));
-        if (player.getNumAttempt() == 10) {
-            System.out.println("У игрока " + player.getName() + " закончились попытки");
-        }
         return true;
     }
 
