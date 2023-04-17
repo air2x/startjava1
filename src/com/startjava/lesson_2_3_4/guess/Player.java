@@ -4,27 +4,27 @@ import java.util.Arrays;
 
 public class Player {
 
-    final String NAME;
-    final int[] NUMS = new int[10];
+    private final String name;
+    private final int[] nums = new int[10];
     private int numAttempt;
 
     public Player(String name) {
-        NAME = name;
+        this.name = name;
     }
 
     public String getName() {
-        return NAME;
+        return name;
     }
 
     public int[] getNums() {
-        return Arrays.copyOf(NUMS, numAttempt);
+        return Arrays.copyOf(nums, numAttempt);
     }
 
     public boolean addNum(int num) {
         if (num < 1 || num > 100) {
             return false;
         }
-        NUMS[numAttempt] = num;
+        nums[numAttempt] = num;
         numAttempt++;
         return true;
     }
@@ -34,7 +34,7 @@ public class Player {
     }
 
     public void clear() {
-        Arrays.fill(NUMS, 0, numAttempt, 0);
+        Arrays.fill(nums, 0, numAttempt, 0);
         numAttempt = 0;
     }
 }
