@@ -27,7 +27,7 @@ public class GuessNumber {
             if (!unique) {
                 break;
             }
-        } while (players[players.length - 1].getNumAttempt() != 10);
+        } while (players[players.length - 1].getNumAttempt() != Player.LAST_ATTEMPT);
         for (Player player : players) {
             printPlayerNums(player.getNums(), player.getName());
         }
@@ -35,7 +35,7 @@ public class GuessNumber {
 
     private static boolean isGuessed(int secretNum, Player player) {
         int num = enterNum(player);
-        if (player.getNumAttempt() == 10) {
+        if (player.getNumAttempt() == Player.LAST_ATTEMPT) {
             System.out.println("У игрока " + player.getName() + " закончились попытки");
         }
         return checkNum(secretNum, num, player);
