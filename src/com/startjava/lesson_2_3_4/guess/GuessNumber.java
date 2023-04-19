@@ -15,7 +15,7 @@ public class GuessNumber {
             player.clear();
         }
         System.out.println("У каждого игрока по 10 попыток");
-        final int secretNum = (int) ((Math.random() * 100) + 1);
+        final int secretNum = (int) ((Math.random() * Player.END_RANGE) + Player.START_RANGE);
         boolean unique = true;
         do {
             for (Player player : players) {
