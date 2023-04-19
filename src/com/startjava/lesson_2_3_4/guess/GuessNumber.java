@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private final Player[] players;
+    private static Player[] players;
 
     public GuessNumber(Player... players) {
-        this.players = players;
+        GuessNumber.players = players;
     }
 
     public void start() {
@@ -27,15 +27,13 @@ public class GuessNumber {
             if (!unique) {
                 break;
             }
-        } while (players[players.length - 1].getNumAttempt() != Player.LAST_ATTEMPT);
-        for (Player player : players) {
-            printPlayerNums(player.getNums(), player.getName());
-        }
+        } while (players[players.length - 1].getNumAttempt() != Player.MAX_ATTEMPT);
+        printPlayersNums();
     }
 
     private static boolean isGuessed(int secretNum, Player player) {
         int num = enterNum(player);
-        if (player.getNumAttempt() == Player.LAST_ATTEMPT) {
+        if (player.getNumAttempt() == Player.MAX_ATTEMPT) {
             System.out.println("У игрока " + player.getName() + " закончились попытки");
         }
         return checkNum(secretNum, num, player);
@@ -44,11 +42,15 @@ public class GuessNumber {
     private static int enterNum(Player player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(player.getName() + " введите число");
-        int num = scanner.nextInt();
-        while (!player.addNum(num)) {
-            System.out.println("Число не входит в интервал от 1 до 100 включительно," + player.getName() +
-                    " введите новое число");
+        int num;
+        while (true) {
             num = scanner.nextInt();
+            if (!player.addNum(num)) {
+                System.out.println("Число не входит в интервал от 1 до 100 включительно," + player.getName() +
+                        " введите новое число");
+            } else {
+                break;
+            }
         }
         return num;
     }
@@ -64,10 +66,12 @@ public class GuessNumber {
         return true;
     }
 
-    private static void printPlayerNums(int[] nums, String name) {
-        for (int num : nums) {
-            System.out.print(num + " ");
+    private static void printPlayersNums() {
+        for (Player player : players) {
+            for (int num : player.getNums()) {
+                System.out.print(num + " ");
+            }
+            System.out.print(" числа принадлежат игроку " + player.getName() + "\n");
         }
-        System.out.print(" числа принадлежат игроку " + name + "\n");
     }
 }
