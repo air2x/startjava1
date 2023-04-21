@@ -10,6 +10,21 @@ public class GuessNumber {
         GuessNumber.players = players;
     }
 
+    public void startDraw() {
+        int len = players.length;
+        for (int i = 0; i < len--; i++) {
+            int index = (int) (Math.random() * len++);
+            Player temp = players[index];
+            players[index] = players[i];
+            players[i] = temp;
+        }
+        int count = 0;
+        for (Player player : players) {
+            count++;
+            System.out.println(count + "-е число вводит " + player.getName());
+        }
+    }
+
     public void start() {
         for (Player player : players) {
             player.clear();
