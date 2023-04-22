@@ -23,6 +23,10 @@ public class Player {
         return Arrays.copyOf(nums, numAttempt);
     }
 
+    public int getNum(int numAttempt) {
+        return nums[numAttempt];
+    }
+
     public boolean addNum(int num) {
         if (num < START_RANGE || num > END_RANGE) {
             return false;

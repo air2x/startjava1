@@ -10,7 +10,6 @@ public class GuessNumberTest {
         String answer = "yes";
         do {
             if (answer.equals("yes")) {
-                game.startDraw();
                 game.start();
             }
             System.out.println("\nХотите продолжить игру? [yes/no]");
