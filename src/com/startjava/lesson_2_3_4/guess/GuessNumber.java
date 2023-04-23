@@ -4,38 +4,38 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private static Player[] players;
-    private static final String[] winners = new String[3];
+    private final Player[] players;
+    public static final int LAST_ROUND = 3;
+    public static final int SCORE_NO_WON = 1;
 
     public GuessNumber(Player... players) {
-        GuessNumber.players = players;
+        this.players = players;
     }
 
     public void start() {
+        for (Player player : players) {
+            player.clearScoreWin();
+        }
         castLots();
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < LAST_ROUND; i++) {
             for (Player player : players) {
                 player.clear();
             }
             System.out.println((i + 1) + "-й раунд игры. У каждого игрока по 10 попыток");
             final int secretNum = (int) ((Math.random() * Player.END_RANGE) + Player.START_RANGE);
-            boolean unique = true;
+            boolean temp = true;
             do {
                 for (Player player : players) {
-                    if (!isGuessed(secretNum, player)) {
-                        winners[i] = player.getName();
-                        unique = false;
+                    if (isGuessed(secretNum, player)) {
+                        temp = false;
                         break;
                     }
                 }
-                if (!unique) {
+                if (!temp) {
                     break;
                 }
-            } while (checkLastAttempt());
+            } while (hasAttempt());
             printPlayersNums();
-        }
-        for (String winner : winners) {
-            System.out.println(winner);
         }
         checkWinner();
     }
@@ -55,7 +55,7 @@ public class GuessNumber {
         }
     }
 
-    private static boolean isGuessed(int secretNum, Player player) {
+    private boolean isGuessed(int secretNum, Player player) {
         int num = enterNum(player);
         if (player.getNumAttempt() == Player.MAX_ATTEMPT && num != secretNum) {
             System.out.println("У игрока " + player.getName() + " закончились попытки");
@@ -78,23 +78,24 @@ public class GuessNumber {
         return num;
     }
 
-    private static boolean checkNum(int secretNum, Player player) {
-        int num = player.getNum(player.getNumAttempt() - 1);
+    private boolean checkNum(int secretNum, Player player) {
+        int num = player.getNum();
         if (secretNum == num) {
             System.out.println("Игрок " + player.getName() + " угадал число " + num + " с " +
                     player.getNumAttempt() + " попытки");
-            return false;
+            player.setScoreWin(player.getScoreWin() + 1);
+            return true;
         }
         System.out.println(num + (secretNum > num ?
                 " меньше" : " больше") + ", чем загадал компьютер");
-        return true;
+        return false;
     }
 
-    private static boolean checkLastAttempt() {
-        return players[players.length - 1].getNumAttempt() != Player.MAX_ATTEMPT;
+    private boolean hasAttempt() {
+        return players[players.length - 1].getNumAttempt() < Player.MAX_ATTEMPT;
     }
 
-    private static void printPlayersNums() {
+    private void printPlayersNums() {
         for (Player player : players) {
             for (int num : player.getNums()) {
                 System.out.print(num + " ");
@@ -103,14 +104,22 @@ public class GuessNumber {
         }
     }
 
-    private static void checkWinner() {
+    private void checkWinner() {
         System.out.print("По результатам трех раундов ");
-        if (!winners[0].equals(winners[1]) && !winners[0].equals(winners[2]) && !winners[1].equals(winners[2])) {
-            System.out.print("ничья");
-        } else if (winners[0].equals(winners[1]) || winners[0].equals(winners[2])) {
-            System.out.println("победил " + winners[0]);
+        int maxScoreWin = 0;
+        for (Player player : players) {
+            if (player.getScoreWin() > maxScoreWin) {
+                maxScoreWin = player.getScoreWin();
+            }
+        }
+        if (maxScoreWin == SCORE_NO_WON) {
+            System.out.println("ничья");
         } else {
-            System.out.println("победил " + winners[2]);
+            for (Player player : players) {
+                if (maxScoreWin == player.getScoreWin()) {
+                    System.out.println("победил " + player.getName());
+                }
+            }
         }
     }
 }

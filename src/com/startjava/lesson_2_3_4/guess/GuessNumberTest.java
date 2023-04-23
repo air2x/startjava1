@@ -6,7 +6,7 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        GuessNumber game = new GuessNumber(creatPlayer(1), creatPlayer(2), creatPlayer(3));
+        GuessNumber game = new GuessNumber(creatPlayer(1, scanner), creatPlayer(2, scanner), creatPlayer(3, scanner));
         String answer = "yes";
         do {
             if (answer.equals("yes")) {
@@ -17,8 +17,7 @@ public class GuessNumberTest {
         } while (!answer.equals("no"));
     }
 
-    public static Player creatPlayer(int numPlayer) {
-        Scanner scanner = new Scanner(System.in);
+    public static Player creatPlayer(int numPlayer, Scanner scanner) {
         System.out.println(numPlayer + "-й игрок назовите ваше имя");
         return new Player(scanner.nextLine());
     }

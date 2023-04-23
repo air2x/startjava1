@@ -10,6 +10,7 @@ public class Player {
     public static final int END_RANGE = 100;
     private final int[] nums = new int[MAX_ATTEMPT];
     private int numAttempt;
+    private int scoreWin;
 
     public Player(String name) {
         this.name = name;
@@ -23,21 +24,32 @@ public class Player {
         return Arrays.copyOf(nums, numAttempt);
     }
 
-    public int getNum(int numAttempt) {
-        return nums[numAttempt];
+    public int getNum() {
+        return nums[numAttempt - 1];
     }
 
     public boolean addNum(int num) {
         if (num < START_RANGE || num > END_RANGE) {
             return false;
         }
-        nums[numAttempt] = num;
-        numAttempt++;
+        nums[numAttempt++] = num;
         return true;
     }
 
     public int getNumAttempt() {
         return numAttempt;
+    }
+
+    public int getScoreWin() {
+        return scoreWin;
+    }
+
+    public void setScoreWin(int scoreWin) {
+        this.scoreWin = scoreWin;
+    }
+
+    public void clearScoreWin() {
+        scoreWin = 0;
     }
 
     public void clear() {
