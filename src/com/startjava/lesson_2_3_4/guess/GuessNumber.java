@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class GuessNumber {
 
     private final Player[] players;
-    public static final int MAX_ROUND = 3;
+    public static final int MAX_ROUNDS = 3;
     public static final int SCORE_NO_WON = 1;
 
     public GuessNumber(Player... players) {
@@ -17,7 +17,7 @@ public class GuessNumber {
             player.clearScoreWin();
         }
         castLots();
-        for (int i = 0; i < MAX_ROUND; i++) {
+        for (int i = 0; i < MAX_ROUNDS; i++) {
             for (Player player : players) {
                 player.clear();
             }
@@ -129,18 +129,17 @@ public class GuessNumber {
             } else if (!guesser && countGuessedOne == 2) {
                 System.out.println("победителей нет");
             } else {
-                for (Player player : players) {
-                    if (player.getScore() == maxScore) {
-                        System.out.println("победил " + player.getName());
-                        break;
-                    }
-                }
+                printWinPlayer(maxScore);
             }
         } else {
-            for (Player player : players) {
-                if (maxScore == player.getScore()) {
-                    System.out.println("победил " + player.getName());
-                }
+            printWinPlayer(maxScore);
+        }
+    }
+
+    private void printWinPlayer(int maxScore) {
+        for (Player player : players) {
+            if (maxScore == player.getScore()) {
+                System.out.println("победил " + player.getName());
             }
         }
     }
