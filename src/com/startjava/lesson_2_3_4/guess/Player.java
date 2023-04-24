@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class Player {
 
-    private final String name;
     public static final int MAX_ATTEMPT = 10;
     public static final int START_RANGE = 1;
     public static final int END_RANGE = 100;
+    private final String name;
     private final int[] nums = new int[MAX_ATTEMPT];
     private int numAttempt;
-    private int scoreWin;
+    private int score;
 
     public Player(String name) {
         this.name = name;
@@ -40,16 +40,16 @@ public class Player {
         return numAttempt;
     }
 
-    public int getScoreWin() {
-        return scoreWin;
+    public int getScore() {
+        return score;
     }
 
-    public void setScoreWin(int scoreWin) {
-        this.scoreWin = scoreWin;
+    public void setScore() {
+        score++;
     }
 
     public void clearScoreWin() {
-        scoreWin = 0;
+        score = 0;
     }
 
     public void clear() {
