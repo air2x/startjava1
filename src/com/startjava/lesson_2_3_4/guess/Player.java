@@ -44,11 +44,11 @@ public class Player {
         return score;
     }
 
-    public void setScore() {
+    public void incrementScore() {
         score++;
     }
 
-    public void clearScoreWin() {
+    public void clearScore() {
         score = 0;
     }
 

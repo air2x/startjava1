@@ -14,7 +14,7 @@ public class GuessNumber {
 
     public void start() {
         for (Player player : players) {
-            player.clearScoreWin();
+            player.clearScore();
         }
         castLots();
         for (int i = 0; i < MAX_ROUNDS; i++) {
@@ -60,7 +60,7 @@ public class GuessNumber {
         if (player.getNumAttempt() == Player.MAX_ATTEMPT && num != secretNum) {
             System.out.println("У игрока " + player.getName() + " закончились попытки");
         }
-        return defineNum(secretNum, player);
+        return compareNums(secretNum, player);
     }
 
     private static int enterNum(Player player) {
@@ -78,12 +78,12 @@ public class GuessNumber {
         return num;
     }
 
-    private boolean defineNum(int secretNum, Player player) {
+    private boolean compareNums(int secretNum, Player player) {
         int num = player.getNum();
         if (secretNum == num) {
             System.out.println("Игрок " + player.getName() + " угадал число " + num + " с " +
                     player.getNumAttempt() + " попытки");
-            player.setScore();
+            player.incrementScore();
             return true;
         }
         System.out.println(num + (secretNum > num ?
